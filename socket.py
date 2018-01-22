@@ -12,5 +12,5 @@ def test(*args):
 
 socketio = SocketIO('localhost', 5000, LoggingNamespace)
 socketio.on('tester', test)
-socketio.emit('testee', 'asdf')
+socketio.emit('testee', 'asf')
 socketio.wait(seconds=1)
