@@ -9,8 +9,7 @@ from socketIO_client import SocketIO
 def test(*args):
     print(args)
 
-
-socketio = SocketIO('localhost', 5000, LoggingNamespace)
+socketio = SocketIO('http://ec2-52-24-126-225.us-west-2.compute.amazonaws.com', 81, LoggingNamespace)
 socketio.on('tester', test)
-socketio.emit('testee', 'asf')
+socketio.emit('testee', 'asdf')
 socketio.wait(seconds=1)
