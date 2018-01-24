@@ -15,6 +15,7 @@ def main():
         }
     }
     data = json.loads(data)
+    
     print(data)
 
 if __name__ == '__main__':
