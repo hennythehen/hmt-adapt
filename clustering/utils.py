@@ -5,6 +5,7 @@ from __future__ import print_function
 
 import random
 import numpy as np
+import requests
 import sklearn.cluster as skc
 from collections import Counter
 
@@ -110,3 +111,11 @@ def predict(new_queries, mission_queries):
             distances[i][j] = np.linalg.norm(new_query - mission_query)
 
     return mission_clusters.take(np.argmin(distances, axis=1), axis=0)
+
+
+def send_query_to_gcs(query):
+    j = {
+        "type": query["type"],
+        "data": query[["query_id", "robot_id", "confidence", "file_path"]].to_json()
+    }
+    requests.post("http://ec2-52-24-126-225.us-west-2.compute.amazonaws.com:81/detection/send-query-to-gcs", json=j)
