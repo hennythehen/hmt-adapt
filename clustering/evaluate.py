@@ -16,6 +16,7 @@ else:
 # For now, set the mission as the first mission.
 current_mission = 1
 participant_id = 0
+threshold = 0.8
 
 # Retrieve query information from query
 json = {
@@ -45,10 +46,11 @@ if req.ok:
     else:
         if current_mission == 1:
             # Non Adaptive System.
-            q_continue = new_queries[new_queries['confidence'] > .80]
-            q_stop = new_queries[new_queries['confidence'] < .80]
+            q_continue = new_queries[new_queries['confidence'] > threshold]
+            q_stop = new_queries[new_queries['confidence'] < threshold]
 
-            utils.send_query_to_gcs(q_stop.iloc[0])
+            if len(q_stop) > 0:
+                utils.send_query_to_gcs(q_stop.iloc[0])
 
             pass
         else:
