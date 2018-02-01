@@ -7,7 +7,6 @@ import random
 import numpy as np
 import requests
 import sklearn.cluster as skc
-from collections import Counter
 
 
 def min_max_normalization(data):

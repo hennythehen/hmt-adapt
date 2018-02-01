@@ -7,7 +7,6 @@ import utils
 # Get the Participant of the mission.
 req = requests.get("http://ec2-52-24-126-225.us-west-2.compute.amazonaws.com:81/iris/retrieve-last-participant")
 if req.ok:
-
     participant_id = req.json()['data'][0]['id']
     current_mission = req.json()['data'][0]['current_mission']
     print("Query Successful")
@@ -15,7 +14,7 @@ else:
     print("Query NOT Successful")
 
 # For now, set the mission as the first mission.
-current_mission = 2
+current_mission = 1
 participant_id = 0
 
 # Retrieve query information from query
